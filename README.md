@@ -95,6 +95,23 @@ Added progress bars (using `tqdm`) for:
 - generating bag of words (word vectors) for large dataset.
 - training epochs
 
+3
+---
+Added code to save the model using tf.train.Saver(). Three additional files are created to save model.
+- mytest_model.data-000000-of-00001
+- my_test_model.index
+- my_test_model.meta
+
+You can restore the model using the code :
+```
+with tf.Session() as sess:
+  new_saver = tf.train.import_meta_graph('my_test_model-1000.meta')
+  new_saver.restore(sess, tf.train.latest_checkpoint('./'))
+
+```
+This will restore the parameters. Then you can access the values.
+
+
 
 
 

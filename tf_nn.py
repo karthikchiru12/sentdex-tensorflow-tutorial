@@ -1,17 +1,3 @@
-#Tensorflow practice to create nueral network
-
-'''
-Roadmap
-
-imput > Weight > hiddenlayer 1 (activation function) > weights > hidden layer 2 (activation function) > Weights >output layer
-
-compare output to intended output > cost function (cross entropy)
-optimization function (optimizer) > minimize cost (AdamOptimizer....SGD,Adagrad)
-
-backpropagation
-
-feedforward + backpropagation  = epoch
-'''
 import json
 import tqdm
 from math import sqrt
@@ -163,7 +149,7 @@ def train_neural_network(_data, model_fn, n_epochs=10, batch_sz=100, do_chunks=F
     # Define scoring function
     correct = tf.equal(tf.argmax(prediction, 1), tf.argmax(y, 1))
     accuracy = tf.reduce_mean(tf.cast(correct, 'float'))
-
+    
     # Defining saver class
     saver = tf.train.Saver()
 
@@ -284,7 +270,7 @@ def load_large_data(test_size=0.1):
 
 
 def load_mnist_data():
-    mnist = input_data.read_data_sets(r'D:\tf_data', one_hot=True)
+    mnist = input_data.read_data_sets(r'dataset', one_hot=True)
 
     _x_train = mnist.train.images
     _y_train = mnist.train.labels
@@ -362,4 +348,3 @@ if __name__ == '__main__':
     plt.ylabel('Train Error')
     plt.title('Train Error over Epochs')
     plt.show()
-
